@@ -2,34 +2,67 @@ clear;
 clc;
 close all;
 
-%% Temperature data
-temperature = [28 31 35 42 38 45 29 41 33 47];
-threshold = 40;
+%% 1. IMPORT THE CSV DATA
+% TODO: Read sensor_log.csv into a table.
+% Example:
+% data = readtable("sensor_log.csv");
 
-%% Exercise
-% Use the function analyzeTemperature to:
+%% 2. EXTRACT THE COLUMNS
+% TODO: Extract these columns into separate variables:
+% time
+% temperature
+% humidity
+
+%% 3. PLOT THE IMPORTED DATA
+% TODO: Plot temperature against time.
 %
-% 1. Calculate the average temperature.
-% 2. Find the maximum temperature.
-% 3. Find all readings above the threshold.
+% Use:
+% plot(time, temperature, 'o-')
 %
-% The function should demonstrate:
-% - Function input arguments
-% - Multiple output arguments
-% - Arrays
-% - A for loop
-% - An if statement
-% - Preallocation using zeros
+% Add:
+% xlabel
+% ylabel
+% title
+% grid on
+
+%% 4. BASIC STATISTICS
+% TODO: Calculate:
+% - Average temperature
+% - Maximum temperature
+% - Minimum temperature
+% - Standard deviation
 %
-% TODO: Call the analyzeTemperature function and store its
-%       three output values in avgTemp, maxTemp and hotReadings.
+% Display the results using fprintf.
 
-[avgTemp, maxTemp, hotReadings] = analyzeTemperature(temperature, threshold);
+%% 5. STATISTICS EXERCISE
+% TODO: Find how many temperature readings are above 40 °C.
+%
+% Hint:
+% hotReadings = temperature > 40;
+%
+% Then use sum() to count them.
+%
+% Also extract the actual temperatures above 40 °C using
+% logical indexing.
 
-%% Display the results
-fprintf('Average temperature: %.2f °C\n', avgTemp);
-fprintf('Maximum temperature: %.2f °C\n', maxTemp);
-fprintf('Number of readings above threshold: %d\n', length(hotReadings));
+%% 6. CURVE FITTING WITH POLYFIT
+% The workshop uses a linear fit.
+%
+% TODO: Fit a straight line using:
+% p = polyfit(time, temperature, 1);
+%
+% p(1) is the slope.
+% p(2) is the intercept.
 
-disp('Hot readings:');
-disp(hotReadings);
+%% 7. CALCULATE THE FITTED VALUES
+% TODO: Use polyval() to calculate the predicted temperatures.
+%
+% Example:
+% temperature_fit = polyval(p, time);
+
+%% 8. PLOT DATA AND FITTED MODEL
+% TODO: Plot:
+% - Original temperature data using 'o'
+% - Linear fitted values using '-'
+%
+% Add labels, title, legend and grid.
